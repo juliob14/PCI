@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ClasificadoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ClasificadoModelStoreContainer">
+          <EntitySet Name="Clasificado" EntityType="ClasificadoModel.Store.Clasificado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClasificadoEstado" EntityType="ClasificadoModel.Store.ClasificadoEstado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClasificadoView" EntityType="ClasificadoModel.Store.ClasificadoView" store:Type="Views" store:Schema="dbo" store:Name="ClasificadoView">
+            <DefiningQuery>SELECT 
+      [ClasificadoView].[clasificadoId] AS [clasificadoId], 
+      [ClasificadoView].[clasificadoTexto] AS [clasificadoTexto], 
+      [ClasificadoView].[publicacionFI] AS [publicacionFI], 
+      [ClasificadoView].[publicacionFF] AS [publicacionFF], 
+      [ClasificadoView].[estadoId] AS [estadoId], 
+      [ClasificadoView].[estadoNombre] AS [estadoNombre]
+      FROM [dbo].[ClasificadoView] AS [ClasificadoView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Clasificado_ClasificadoEstado" Association="ClasificadoModel.Store.FK_Clasificado_ClasificadoEstado">
+            <End Role="ClasificadoEstado" EntitySet="ClasificadoEstado" />
+            <End Role="Clasificado" EntitySet="Clasificado" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Clasificado">
+          <Key>
+            <PropertyRef Name="clasificadoId" />
+          </Key>
+          <Property Name="clasificadoId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="clasificadoTexto" Type="nvarchar" Nullable="false" MaxLength="3000" />
+          <Property Name="publicacionFI" Type="date" Nullable="false" />
+          <Property Name="publicacionFF" Type="date" Nullable="false" />
+          <Property Name="estadoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClasificadoEstado">
+          <Key>
+            <PropertyRef Name="estadoId" />
+          </Key>
+          <Property Name="estadoId" Type="int" Nullable="false" />
+          <Property Name="estadoNombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PCIClasificado.dbo.ClasificadoView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ClasificadoView">
+          <Key>
+            <PropertyRef Name="clasificadoId" />
+            <PropertyRef Name="clasificadoTexto" />
+            <PropertyRef Name="publicacionFI" />
+            <PropertyRef Name="publicacionFF" />
+            <PropertyRef Name="estadoId" />
+            <PropertyRef Name="estadoNombre" />
+          </Key>
+          <Property Name="clasificadoId" Type="bigint" Nullable="false" />
+          <Property Name="clasificadoTexto" Type="nvarchar" Nullable="false" MaxLength="3000" />
+          <Property Name="publicacionFI" Type="date" Nullable="false" />
+          <Property Name="publicacionFF" Type="date" Nullable="false" />
+          <Property Name="estadoId" Type="int" Nullable="false" />
+          <Property Name="estadoNombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Clasificado_ClasificadoEstado">
+          <End Role="ClasificadoEstado" Type="ClasificadoModel.Store.ClasificadoEstado" Multiplicity="1" />
+          <End Role="Clasificado" Type="ClasificadoModel.Store.Clasificado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClasificadoEstado">
+              <PropertyRef Name="estadoId" />
+            </Principal>
+            <Dependent Role="Clasificado">
+              <PropertyRef Name="estadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClasificadoModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ClasificadoEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Clasificado" EntityType="ClasificadoModel.Clasificado" />
+          <EntitySet Name="ClasificadoEstado" EntityType="ClasificadoModel.ClasificadoEstado" />
+          <EntitySet Name="ClasificadoView" EntityType="ClasificadoModel.ClasificadoView" />
+          <AssociationSet Name="FK_Clasificado_ClasificadoEstado" Association="ClasificadoModel.FK_Clasificado_ClasificadoEstado">
+            <End Role="ClasificadoEstado" EntitySet="ClasificadoEstado" />
+            <End Role="Clasificado" EntitySet="Clasificado" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Clasificado">
+          <Key>
+            <PropertyRef Name="clasificadoId" />
+          </Key>
+          <Property Name="clasificadoId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="clasificadoTexto" Type="String" Nullable="false" MaxLength="3000" Unicode="true" FixedLength="false" />
+          <Property Name="publicacionFI" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="publicacionFF" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estadoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClasificadoEstado" Relationship="ClasificadoModel.FK_Clasificado_ClasificadoEstado" FromRole="Clasificado" ToRole="ClasificadoEstado" />
+        </EntityType>
+        <EntityType Name="ClasificadoEstado">
+          <Key>
+            <PropertyRef Name="estadoId" />
+          </Key>
+          <Property Name="estadoId" Type="Int32" Nullable="false" />
+          <Property Name="estadoNombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Clasificado" Relationship="ClasificadoModel.FK_Clasificado_ClasificadoEstado" FromRole="ClasificadoEstado" ToRole="Clasificado" />
+        </EntityType>
+        <EntityType Name="ClasificadoView">
+          <Key>
+            <PropertyRef Name="clasificadoId" />
+            <PropertyRef Name="clasificadoTexto" />
+            <PropertyRef Name="publicacionFI" />
+            <PropertyRef Name="publicacionFF" />
+            <PropertyRef Name="estadoId" />
+            <PropertyRef Name="estadoNombre" />
+          </Key>
+          <Property Name="clasificadoId" Type="Int64" Nullable="false" />
+          <Property Name="clasificadoTexto" Type="String" Nullable="false" MaxLength="3000" Unicode="true" FixedLength="false" />
+          <Property Name="publicacionFI" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="publicacionFF" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estadoId" Type="Int32" Nullable="false" />
+          <Property Name="estadoNombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Clasificado_ClasificadoEstado">
+          <End Role="ClasificadoEstado" Type="ClasificadoModel.ClasificadoEstado" Multiplicity="1" />
+          <End Role="Clasificado" Type="ClasificadoModel.Clasificado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClasificadoEstado">
+              <PropertyRef Name="estadoId" />
+            </Principal>
+            <Dependent Role="Clasificado">
+              <PropertyRef Name="estadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClasificadoModelStoreContainer" CdmEntityContainer="ClasificadoEntities">
+          <EntitySetMapping Name="Clasificado">
+            <EntityTypeMapping TypeName="ClasificadoModel.Clasificado">
+              <MappingFragment StoreEntitySet="Clasificado">
+                <ScalarProperty Name="clasificadoId" ColumnName="clasificadoId" />
+                <ScalarProperty Name="clasificadoTexto" ColumnName="clasificadoTexto" />
+                <ScalarProperty Name="publicacionFI" ColumnName="publicacionFI" />
+                <ScalarProperty Name="publicacionFF" ColumnName="publicacionFF" />
+                <ScalarProperty Name="estadoId" ColumnName="estadoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClasificadoEstado">
+            <EntityTypeMapping TypeName="ClasificadoModel.ClasificadoEstado">
+              <MappingFragment StoreEntitySet="ClasificadoEstado">
+                <ScalarProperty Name="estadoId" ColumnName="estadoId" />
+                <ScalarProperty Name="estadoNombre" ColumnName="estadoNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClasificadoView">
+            <EntityTypeMapping TypeName="ClasificadoModel.ClasificadoView">
+              <MappingFragment StoreEntitySet="ClasificadoView">
+                <ScalarProperty Name="clasificadoId" ColumnName="clasificadoId" />
+                <ScalarProperty Name="clasificadoTexto" ColumnName="clasificadoTexto" />
+                <ScalarProperty Name="publicacionFI" ColumnName="publicacionFI" />
+                <ScalarProperty Name="publicacionFF" ColumnName="publicacionFF" />
+                <ScalarProperty Name="estadoId" ColumnName="estadoId" />
+                <ScalarProperty Name="estadoNombre" ColumnName="estadoNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

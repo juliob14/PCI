@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCIClasificadoMvc4App", "PCIClasificadoMvc4App\PCIClasificadoMvc4App.csproj", "{C5C0BA4C-F03D-487D-A2EE-E56A04261EAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCIClasificadoMvc4App.Tests", "PCIClasificadoMvc4App.Tests\PCIClasificadoMvc4App.Tests.csproj", "{58085E1F-ECAB-4F38-81A7-93A1A1CCECFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5C0BA4C-F03D-487D-A2EE-E56A04261EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C0BA4C-F03D-487D-A2EE-E56A04261EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C0BA4C-F03D-487D-A2EE-E56A04261EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C0BA4C-F03D-487D-A2EE-E56A04261EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58085E1F-ECAB-4F38-81A7-93A1A1CCECFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58085E1F-ECAB-4F38-81A7-93A1A1CCECFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58085E1F-ECAB-4F38-81A7-93A1A1CCECFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58085E1F-ECAB-4F38-81A7-93A1A1CCECFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

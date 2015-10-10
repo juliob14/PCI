@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PCIClasificadoMvc4App.Models.Clasificado>
+@{
+    ViewBag.Title = "Clasificados";
+}
+<h2>Clasificados</h2>
+
+<p>@Html.ActionLink("Nuevo", "Create")</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Clasificado</th>
+        <th>Inicio</th>
+        <th>Fin</th>
+        <th></th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.clasificadoId)</td>
+        <td>@Html.DisplayFor(modelItem => item.clasificadoTexto)</td>
+        <td>@String.Format("{0:d}", item.publicacionFI)</td>
+        <td>@String.Format("{0:d}", item.publicacionFF)</td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.clasificadoId }) |
+            @Html.ActionLink("Detalles", "Details", new {  id=item.clasificadoId }) |
+            @Html.ActionLink("Eliminar", "Delete", new {  id=item.clasificadoId })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+
+
+@* item es una variable que hace referencia a cada uno de los elementos 
+    de la enumeracion asociada al model (IEnumerable<PCIClasificadoMvc4App.Models.Clasificado>)
+*@
+@foreach (var item in Model) {
+    @*<p> @item.clasificadoTexto, @item.publicacionFI , @item.publicacionFF </p>*@
+}
