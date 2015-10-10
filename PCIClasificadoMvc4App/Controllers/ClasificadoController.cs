@@ -23,5 +23,18 @@ namespace PCIClasificadoMvc4App.Controllers {
             //return View(db.Clasificado.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Create(Clasificado clasificado)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Clasificado.Add(clasificado);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(clasificado);
+        }
+
     }
 }
