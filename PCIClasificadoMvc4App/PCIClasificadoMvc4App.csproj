@@ -135,6 +135,7 @@
     <Compile Include="Models\ClasificadoEstado.cs">
       <DependentUpon>ClasificadoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClasificadoMetaData.cs" />
     <Compile Include="Models\ClasificadoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
