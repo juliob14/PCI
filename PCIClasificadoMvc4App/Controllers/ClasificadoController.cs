@@ -35,6 +35,25 @@ namespace PCIClasificadoMvc4App.Controllers {
 
             return View(clasificado);
         }
-
+        public ActionResult Edit(long id)
+        {
+            //return View(db.Clasificado.Where(c => c.clasificadoId.Equals(id)).First());
+            return View(db.Clasificado.Find(id));
+        }
+        [HttpPost]
+        public ActionResult Edit(Clasificado clasificado)
+        {
+            db.Entry(clasificado).State = System.Data.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+            
+        }
+        public ActionResult Delete(long id)
+        {
+            Clasificado clasificado = db.Clasificado.Find(id);
+            db.Clasificado.Remove(clasificado);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -264,6 +264,7 @@
     <Content Include="Views\ClasificadoEstado\Delete.cshtml" />
     <Content Include="Views\Clasificado\Index.cshtml" />
     <Content Include="Views\Clasificado\Create.cshtml" />
+    <Content Include="Views\Clasificado\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

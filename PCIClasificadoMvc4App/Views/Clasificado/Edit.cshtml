@@ -1,0 +1,62 @@
+﻿@model PCIClasificadoMvc4App.Models.Clasificado
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Clasificado</legend>
+
+        @Html.HiddenFor(model => model.clasificadoId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.clasificadoTexto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.clasificadoTexto)
+            @Html.ValidationMessageFor(model => model.clasificadoTexto)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.publicacionFI)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.publicacionFI)
+            @Html.ValidationMessageFor(model => model.publicacionFI)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.publicacionFF)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.publicacionFF)
+            @Html.ValidationMessageFor(model => model.publicacionFF)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.estadoId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.estadoId)
+            @Html.ValidationMessageFor(model => model.estadoId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
